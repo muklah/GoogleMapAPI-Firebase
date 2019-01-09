@@ -78,7 +78,6 @@ export default class App extends React.Component {
       };
       await this.setState({ region });
     }
-    await this.getBarberShops();
   };
 
   render() {
