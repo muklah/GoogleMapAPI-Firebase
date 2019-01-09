@@ -1,18 +1,64 @@
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
-import { MapView } from 'expo'
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+import { MapView } from "expo";
+import { Svg } from 'expo';
+import StarRating from './StarRating';
 
-const Marker = MapView.Marker
+const { Image, Circle, Rect } = Svg;
+
+const Marker = MapView.Marker;
 
 export default class Map extends Component {
   renderMarkers() {
-    return this.props.places.map((place, i) => (
-      <Marker key={i} title={place.name} coordinate={place.coords} />
-    ))
+    return this.props.places.map((marker, i) => (
+      <Marker key={i} title={marker.name} coordinate={marker.coords} >
+        <View style={{
+          flexDirection: 'row', width: 70, height: 60,
+          backgroundColor: 'none',
+        }}>
+          <Svg
+            width={60} height={50}>
+            <Rect
+              fill="#BB0A21" x="15" y="10" width="35" height="33"
+              style={{
+                borderRadius: 10,
+              }}
+            />
+            <Image
+              href={require('../assets/barber-icon.png')}
+              x={17}
+              y={12}
+              width={30}
+              height={30}
+            />
+
+            <Circle
+              cx="48" cy="10" r="7" stroke="green" strokeWidth="1" fill="white"
+            >
+            </Circle>
+            <Text
+              id="queue"
+              style={{
+                fontSize: 9,
+                marginTop: 3,
+                marginLeft: 46,
+                color: '#BB0A21',
+                fontWeight: 'bold',
+              }}
+            >7</Text>
+
+            <StarRating rating={marker.rating} />
+
+          </Svg>
+        </View>
+
+      </Marker>
+    ));
   }
-  
+  componentDidMount() { }
+
   render() {
-    const { region } = this.props
+    const region = this.props.region;
     return (
       <MapView
         style={styles.container}
@@ -22,12 +68,12 @@ export default class Map extends Component {
       >
         {this.renderMarkers()}
       </MapView>
-    )
+    );
   }
 }
 const styles = {
   container: {
-    width: '100%',
-    height: '80%',
+    width: "100%",
+    height: "100%"
   }
-}
+};
