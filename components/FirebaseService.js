@@ -1,6 +1,7 @@
 
 // var firebase = require("firebase");
 import firebase from 'firebase';
+import { ACTION_SHOW_INPUT_METHOD_PICKER } from 'expo/build/IntentLauncherAndroid/IntentLauncherAndroid';
 
 // Initialize Firebase
 var config = {
@@ -12,12 +13,14 @@ var config = {
     messagingSenderId: "485266392528"
 };
 firebase.initializeApp(config);
-
-const shops
+var shopss;
 const api =
     firebase.database().ref('/Barbers').on('value', (snapshot) => {
- 
-        shops = snapshot.val();
+        console.log('Muklaaaaaaaaaaaaah2')
+        // console.log(snapshot.val())
+        const shops = snapshot.val()
+        console.log(shops)
+        shopss = Object.values(shops)
     });
 
 var coords = { latitude: 34.35479, longitude: 41.960243 }
@@ -33,11 +36,10 @@ const api2 =
         console.log('error ', error)
     })
 
-
 const getBarbersShops = userLocation => {
-    console.log(api);
-    
-    // return api
+    console.log('teeeeeeeest2')
+    console.log(shopss)
+    return shopss
         //   .get('/businesses/search', {
         //     params: {
         //       limit: 10,
@@ -54,7 +56,6 @@ const getBarbersShops = userLocation => {
         //     })
         // )
         // .catch(error => console.error(error))
-        return shops
 }
 
 export default {
