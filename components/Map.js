@@ -1,17 +1,22 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { MapView } from "expo";
 import { Svg } from 'expo';
 import StarRating from './StarRating';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 const { Image, Circle, Rect } = Svg;
 
 const Marker = MapView.Marker;
 
-export default class Map extends Component {
+class BarbersMap extends Component {
   renderMarkers() {
-    return this.props.places.map((marker, i) => (
+    return this.props.barberShops.map((marker, i) => (
       <Marker key={i} title={marker.name} coordinate={marker.coords} >
+      <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Details')}
+        />
         <View style={{
           flexDirection: 'row', width: 70, height: 60,
           backgroundColor: 'none',
@@ -71,9 +76,56 @@ export default class Map extends Component {
     );
   }
 }
+
+class BarberDetails extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Button
+          title="Go to Details... again"
+          onPress={() => this.props.navigation.push('Details')}
+        />
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Map')}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+      </View>
+    );
+  }
+}
+
+const RootStack = createStackNavigator(
+  {
+    Map: {
+      screen: BarbersMap,
+    },
+    Details: {
+      screen: BarberDetails,
+    },
+  },
+  {
+    initialRouteName: 'Map',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+
 const styles = {
   container: {
     width: "100%",
     height: "100%"
   }
 };
+
+export default class Map extends Component {
+  render() {
+    return <AppContainer {...this.props} />;
+  }
+}
+// export default Map;

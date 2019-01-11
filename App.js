@@ -4,7 +4,7 @@ import { Location, Permissions } from "expo";
 
 import firebase from "firebase";
 
-import Map from "./components/Map";
+import BarbersMap from "./components/Map";
 import StarRating from "./components/StarRating";
 
 // Initialize Firebase
@@ -103,8 +103,7 @@ export default class App extends React.Component {
     const { region, barberShops } = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        <Map region={region} places={barberShops} />
-        {/* <StarRating places={barberShops}></StarRating> */}
+        <BarbersMap region={region} barberShops={barberShops} />
       </SafeAreaView>
     );
   }
