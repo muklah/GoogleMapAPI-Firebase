@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
 import { Location, Permissions } from "expo";
 
 import firebase from "firebase";
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import BarbersMap from "./components/Map";
 import StarRating from "./components/StarRating";
+import BarberDetails from "./components/BarberDetails";
 
 // Initialize Firebase
 var config = {
@@ -24,7 +26,7 @@ const deltas = {
 };
 
 // type Props = {};
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -100,14 +102,33 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { region, barberShops } = this.state;
+    // const { region, barberShops } = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        <BarbersMap region={region} barberShops={barberShops} />
-      </SafeAreaView>
+      <RootStack />
+      // <SafeAreaView style={styles.container}>
+      //   <BarbersMap region={region} barberShops={barberShops} />
+      // </SafeAreaView>
     );
   }
 }
+
+const { region, barberShops } = this.state;
+const RootStack = createStackNavigator(
+  {
+    Home: {
+      screen: props=> <BarbersMap {...props} screenProps={region}></BarbersMap>
+    },
+    Details: {
+      screen: BarberDetails,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppNavigator = createAppContainer(RootStack);
+export default AppNavigator;
 
 const styles = StyleSheet.create({
   container: {

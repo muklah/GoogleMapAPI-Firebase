@@ -3,20 +3,19 @@ import { View, Text, Button } from "react-native";
 import { MapView } from "expo";
 import { Svg } from 'expo';
 import StarRating from './StarRating';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 const { Image, Circle, Rect } = Svg;
 
 const Marker = MapView.Marker;
 
-class BarbersMap extends Component {
-  renderMarkers() {
+export default class BarbersMap extends Component {
+  renderMarkers() {    
     return this.props.barberShops.map((marker, i) => (
       <Marker key={i} title={marker.name} coordinate={marker.coords} >
-      <Button
+      {/* <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
-        />
+        /> */}
         <View style={{
           flexDirection: 'row', width: 70, height: 60,
           backgroundColor: 'none',
@@ -77,43 +76,27 @@ class BarbersMap extends Component {
   }
 }
 
-class BarberDetails extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-        <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Details')}
-        />
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Map')}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
-    );
-  }
-}
-
-const RootStack = createStackNavigator(
-  {
-    Map: {
-      screen: BarbersMap,
-    },
-    Details: {
-      screen: BarberDetails,
-    },
-  },
-  {
-    initialRouteName: 'Map',
-  }
-);
-
-const AppContainer = createAppContainer(RootStack);
+// class BarberDetails extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Details Screen</Text>
+//         <Button
+//           title="Go to Details... again"
+//           onPress={() => this.props.navigation.push('Details')}
+//         />
+//         <Button
+//           title="Go to Home"
+//           onPress={() => this.props.navigation.navigate('Map')}
+//         />
+//         <Button
+//           title="Go back"
+//           onPress={() => this.props.navigation.goBack()}
+//         />
+//       </View>
+//     );
+//   }
+// }
 
 
 const styles = {
@@ -122,10 +105,3 @@ const styles = {
     height: "100%"
   }
 };
-
-export default class Map extends Component {
-  render() {
-    return <AppContainer {...this.props} />;
-  }
-}
-// export default Map;
