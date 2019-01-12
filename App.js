@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
 import { Location, Permissions } from "expo";
+import { Constants } from "expo";
 
 import firebase from "firebase";
 
 import Map from "./components/Map";
 import StarRating from "./components/StarRating";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
 // Initialize Firebase
 var config = {
@@ -24,7 +26,7 @@ const deltas = {
 };
 
 // type Props = {};
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -106,6 +108,32 @@ export default class App extends React.Component {
         <Map region={region} places={barberShops} />
         {/* <StarRating places={barberShops}></StarRating> */}
       </SafeAreaView>
+    );
+  }
+}
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: App
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class Main extends React.Component {
+  render() {
+    return (
+      <View
+        style={{
+          flex: 1,
+          marginTop: Constants.statusBarHeight
+        }}
+      >
+        <AppContainer />
+      </View>
     );
   }
 }
