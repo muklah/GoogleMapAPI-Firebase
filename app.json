@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "GoogleMapAPI",
+    "slug": "GoogleMapAPI",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.muklah.googlemapapi"
+    },
+    "android": {
+      "package": "com.muklah.googlemapapi",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyAua1rIQhgiWQ3N41uBkhGbFfporNO3BqE" }   
+     }
+    }
+  }
+}
