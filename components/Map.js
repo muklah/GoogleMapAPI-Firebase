@@ -13,7 +13,8 @@ class Map extends Component {
   renderMarkers() {
     return this.props.places.map((marker, i) => (
       <Marker key={i} title={marker.name} coordinate={marker.coords} 
-      onPress={() => this.props.navigation.navigate('Details')} >
+      onPress={() => this.props.navigation.navigate('Details', 
+      {title: marker.name, rating: marker.rating, description: marker.description})} >
         <View style={{
           flexDirection: 'row', width: 70, height: 60,
           backgroundColor: 'none',
@@ -73,28 +74,6 @@ class Map extends Component {
     );
   }
 }
-
-// class BarberDetails extends Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Text>Details Screen</Text>
-//         <Button
-//           title="Go to Details... again"
-//           onPress={() => this.props.navigation.push('Details')}
-//         />
-//         <Button
-//           title="Go to Home"
-//           onPress={() => this.props.navigation.navigate('Map')}
-//         />
-//         <Button
-//           title="Go back"
-//           onPress={() => this.props.navigation.goBack()}
-//         />
-//       </View>
-//     );
-//   }
-// }
 
 
 const styles = {

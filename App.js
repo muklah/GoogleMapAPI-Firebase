@@ -45,19 +45,20 @@ class App extends React.Component {
   componentWillMount() {
     this.getLocationAsync();
 
-    // var coords = { latitude: 33.296598, longitude: 44.2881 }
-    // const api2 =
-    //   firebase.database().ref('Barbers/').push({
-    //     name: 'mmmm',
-    //     rating: 2,
-    //     coords: coords
-    //   }).then((data) => {
-    //     //success callback
-    //     console.log('data ', data)
-    //   }).catch((error) => {
-    //     //error callback
-    //     console.log('error ', error)
-    //   })
+    var coords = { latitude: 33.296598, longitude: 44.2881 }
+    const api2 =
+      firebase.database().ref('Barbers/').push({
+        name: 'Jazz Barber',
+        description: 'Lorem ipsum dolor sit amet, id eam quod gubergren elaboraret. Eu decore iudicabit neglegentur usu. Eum at nostrum blandit. Duis quando noster eam ea. Probo pertinacia adipiscing usu et, ei essent concludaturque eos.',
+        rating: 4,
+        coords: coords
+      }).then((data) => {
+        //success callback
+        console.log('data ', data)
+      }).catch((error) => {
+        //error callback
+        console.log('error ', error)
+      })
   }
 
   componentDidMount() {
@@ -100,7 +101,7 @@ class App extends React.Component {
   };
 
   render() {
-    // const { region, barberShops } = this.state;
+    const { region, barberShops } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <Map region={region} places={barberShops} />
@@ -141,7 +142,7 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#7BD8EB",
     alignItems: "center",
     justifyContent: "center"
   }

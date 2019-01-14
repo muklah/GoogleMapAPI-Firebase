@@ -20,26 +20,6 @@ export default class StarRating extends Component {
 		return (
 			<View style={styles.container}>
 				{ stars }
-				{/* <Image
-					style={styles.image}
-					source={require('../assets/star-filled.png')}
-				/>
-				<Image
-					style={styles.image}
-					source={require('../assets/star-filled.png')}
-				/>
-				<Image
-					style={styles.image}
-					source={require('../assets/star-filled.png')}
-				/>
-				<Image
-					style={styles.image}
-					source={require('../assets/star-unfilled.png')}
-				/>
-				<Image
-					style={styles.image}
-					source={require('../assets/star-unfilled.png')}
-				/> */}
 			</View>
 		);
 	}

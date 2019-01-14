@@ -5,20 +5,27 @@ import StarRating from "./StarRating";
 export default class BarberDetails extends Component {
 
     render() {
+        const { navigation } = this.props;
+        const title = navigation.getParam('title', 'Barber Name');
+        const rating = navigation.getParam('rating', '0');
+        const description = navigation.getParam('description', 'Description Here');
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Image style={styles.image} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }}>
                     </Image>
-                    <View style={styles.starRating}>
-                        <StarRating />
-                        <Text style={styles.reviews}> 24 reviews</Text>
+                    <View style={styles.headerInfo}>
+                        <Text style={styles.title}>{title}</Text>
+                        <View style={styles.starRating}>
+                            <StarRating rating={JSON.stringify(rating)} />
+                            <Text style={styles.reviews}> 24 reviews</Text>
+                        </View>
                     </View>
                 </View>
                 <View style={styles.body}>
                     <View style={styles.bodyContent}>
                         <Text style={styles.descriptionTitle}>Description</Text>
-                        <Text style={styles.description}>Over Priced Hair Place where you only go to make a check in, and your hair will defiantly stay the same wether you go or not</Text>
+                        <Text style={styles.description}>{description}</Text>
 
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text style={styles.buttonText}>Book Now</Text>
@@ -31,66 +38,53 @@ export default class BarberDetails extends Component {
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-    container:{
+    container: {
         backgroundColor: "#2A2E43"
     },
     header: {
         backgroundColor: "#2A2E43",
         height: 200,
     },
-    image: {
-        height: 200,
-=======
-    header: {
-        backgroundColor: "#00BFFF",
-        height: 500,
+    headerInfo: {
+        padding: 10,
     },
     image: {
-        height: 500,
->>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
+        height: 190,
+    },
+    title: {
+        color: "#FFFFFF",
+        fontSize: 26,
+        fontWeight: '200'
     },
     starRating: {
         flexDirection: 'row',
-        paddingLeft: 10,
-        backgroundColor: "#2A2E43"
+        backgroundColor: "#2A2E43",
     },
     reviews: {
         fontSize: 16,
         color: "#FFFFFF",
-        marginTop: 22
+        marginTop: 20
     },
     descriptionTitle: {
         fontSize: 26,
-<<<<<<< HEAD
         color: "#000000",
-=======
-        color: "#FFFFFF",
->>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
         fontWeight: '400',
         marginTop: 10,
         textAlign: 'left'
     },
     description: {
         fontSize: 14,
-<<<<<<< HEAD
         color: "#000000",
-=======
-        color: "#FFFFFF",
->>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
         marginTop: 10
     },
     body: {
-        marginTop: 40,
+        marginTop: 80,
         backgroundColor: "#2A2E43",
     },
     bodyContent: {
         flex: 1,
         padding: 10,
-<<<<<<< HEAD
         backgroundColor: "#2A2E43",
-=======
->>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
     },
     buttonContainer: {
         marginTop: 40,
@@ -109,4 +103,3 @@ const styles = StyleSheet.create({
         fontSize: 16
     }
 });
-
