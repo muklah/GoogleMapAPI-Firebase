@@ -31,6 +31,7 @@ export default class BarberDetails extends Component {
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
     container:{
         backgroundColor: "#2A2E43"
     },
@@ -40,6 +41,14 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 200,
+=======
+    header: {
+        backgroundColor: "#00BFFF",
+        height: 500,
+    },
+    image: {
+        height: 500,
+>>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
     },
     starRating: {
         flexDirection: 'row',
@@ -53,14 +62,22 @@ const styles = StyleSheet.create({
     },
     descriptionTitle: {
         fontSize: 26,
+<<<<<<< HEAD
         color: "#000000",
+=======
+        color: "#FFFFFF",
+>>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
         fontWeight: '400',
         marginTop: 10,
         textAlign: 'left'
     },
     description: {
         fontSize: 14,
+<<<<<<< HEAD
         color: "#000000",
+=======
+        color: "#FFFFFF",
+>>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
         marginTop: 10
     },
     body: {
@@ -70,7 +87,10 @@ const styles = StyleSheet.create({
     bodyContent: {
         flex: 1,
         padding: 10,
+<<<<<<< HEAD
         backgroundColor: "#2A2E43",
+=======
+>>>>>>> 2259b94acaf63b18733364574f6ce0634cc1b1ce
     },
     buttonContainer: {
         marginTop: 40,

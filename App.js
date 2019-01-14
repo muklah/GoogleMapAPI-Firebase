@@ -100,7 +100,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { region, barberShops } = this.state;
+    // const { region, barberShops } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <Map region={region} places={barberShops} />
